@@ -1,0 +1,104 @@
+<ion-header>
+    <ion-navbar align-title="center">
+        <ion-buttons left>
+            <button *ngIf="!cameraCloseFlag" ion-button menuToggle left>
+        <ion-icon name="menu" class="color"></ion-icon>
+      </button>
+            <button *ngIf="cameraCloseFlag" ion-button left class="qrcode-btn" style="background-image:url('assets/imgs/back-arrow.png');background-size: contain;background-repeat: no-repeat;width: 40px;z-index:5" (click)="closeCameraPreview()">
+      </button>
+        </ion-buttons>
+        <ion-title middle center text-center>My Events</ion-title>
+        <ion-buttons right>
+            <button ion-button right class="qrcode-btn" style="background-image:url('assets/icon/qr_code.png');background-size: contain;background-repeat: no-repeat;width: 40px;" (click)="onQrCodeClick()">
+    </button>
+            <!-- <button *ngIf="cameraCloseFlag" ion-button right (click)="closeCameraPreview()" style="position: absolute; top: 5px;right: 5%;font-size: 5rem;width: 75px;height: 75px;">
+      <ion-icon ios="ios-square-outline" md="md-square-outline" class="color"></ion-icon>
+    </button> -->
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding [hidden]="this.cameraCloseFlag">
+    <ion-refresher (ionRefresh)="doRefresh($event)" class="ionrefresher-cls">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="crescent">
+        </ion-refresher-content>
+    </ion-refresher>
+    <ion-segment color="black" [(ngModel)]="Events" ion-fixed padding>
+        <ion-segment-button value="TODAY" (click)="onEventData('today')" [disabled]="loader">TODAY
+        </ion-segment-button>
+        <ion-segment-button value="UPCOMING" (click)="onEventData('upcoming')" [disabled]="loader">UPCOMING
+        </ion-segment-button>
+        <ion-segment-button value="PAST" (click)="onEventData('past')" [disabled]="loader">PAST
+        </ion-segment-button>
+    </ion-segment>
+    <ion-spinner class="img-spinner" name="circles" *ngIf="loader"></ion-spinner>
+    <div [ngSwitch]="Events" class="events-list">
+        <ion-list *ngIf="!loader">
+            <ion-item *ngFor="let e of events;let i = index" class="event-item">
+                <ion-grid no-padding>
+                    <!-- <ion-row style="font-size: 12px;">
+                        <ion-grid text-wrap>
+                            {{e.event_name}}
+                        </ion-grid>
+                    </ion-row> -->
+                    <ion-row class="event-row">
+                        <ion-col col-5 col-sm-4 col-md-4 class="img-col" align="center" style="background:transparent url('assets/imgs/loader.gif') no-repeat scroll center center;background-size: 30px 30px;">
+                            <img [src]="e.event_image == '' ? this.url : e.event_image" [ngClass]="{'default-image': e.event_image == '' ,'event-image': e.event_image != ''}" />
+                            <!-- <ion-spinner></ion-spinner> -->
+                            <ion-icon name="open-outline" class="open-order-detail" (click)="openEventDetails(e)"></ion-icon>
+                        </ion-col>
+                        <ion-col col-7 col-sm-8 col-md-8>
+                            <ion-row class="event-name">
+                                <ion-grid text-wrap>
+                                    <!-- {{(e.event_name | slice:0:56)+(e.event_name == null ? '' : e.event_name.length > 56 ? '...' : '')}} -->
+                                    {{e.event_name == null ? '' : e.event_name | titlecase}}
+                                </ion-grid>
+                            </ion-row>
+                            <ion-row class="event-details">
+                                <ion-grid class="card-details">
+                                    <ion-row>
+                                        <ion-col col-6 style="color:#4D8CF4" (click)="showDatePopOver($event,e)">
+                                            <ion-icon ios="ios-calendar-outline" md="md-calendar" class="margin-right"></ion-icon> {{e.eventdate != 'Not available' ? (e.eventdate | date:'d MMM y') :(e.eventdate)}}
+                                        </ion-col>
+                                        <ion-col col-6>
+                                            <ion-icon ios="ios-time-outline" md="md-time" class="margin-right"></ion-icon> {{(e.eventtime == '' || e.eventtime == null )? '12:00 AM': e.eventtime}}
+                                        </ion-col>
+                                    </ion-row>
+                                    <ion-row>
+                                        <ion-col col-6 class="venue-name" (click)="showVenuePopOver($event,e)">
+                                            <ion-icon ios="ios-pin-outline" md="md-pin" class="margin-right"></ion-icon> {{e.venue == '' ? 'Not available' : e.venue| titlecase}}
+                                        </ion-col>
+                                        <ion-col col-6 [ngClass]="{'red':!e.validate_device,'green':e.validate_device}" (click)="onValidateDevice(!e.validate_device,e)">
+                                            <ion-icon ios="ios-phone-portrait-outline" md="md-phone-portrait" class="margin-right">
+                                            </ion-icon>
+                                            {{e.validate_device ? 'Device Valid' : 'Validate Device'}}
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-grid>
+                            </ion-row>
+                            <ion-row justify-content-center><button ion-button block outline color="btn-clr" class="card-view-details" (click)="onSearchTickets(e)">Search Tickets</button></ion-row>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+        </ion-list>
+        <ion-item *ngIf="events == ''">
+            <ion-label>{{noDataFoundMsg}}</ion-label>
+        </ion-item>
+        <!-- <ion-list *ngSwitchCase="'TODAY'">
+            <ion-item>
+                today
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'UPCOMING'">
+            <ion-item>
+                upcoming
+            </ion-item>
+        </ion-list> -->
+    </div>
+    <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())" [enabled]="disableInfiniteScroll">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Fetching More Events">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

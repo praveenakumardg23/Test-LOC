@@ -1,0 +1,31 @@
+<ion-menu [content]="content">
+    <ion-content>
+        <ion-item class="menu">
+            <ion-grid>
+                <ion-row justify-content-center class="img-row">
+                    <ion-col col-12 align="center">
+                        <!-- <img src="assets/imgs/logo_sidemenu.png"> -->
+                        <img src="assets/imgs/sidemenu-defaultimg.png">
+                    </ion-col>
+                </ion-row>
+                <ion-row justify-content-center class="name-display">
+                    <ion-spinner name="bubbles" *ngIf="!adminGlobals" class="adminGlobals-load"></ion-spinner>
+                    <span class="fullname">{{adminGlobals?.first_name| titlecase}} {{adminGlobals?.last_name| titlecase}}</span>
+                </ion-row>
+                <ion-row justify-content-center class="email-display">
+                    <span class="email-small-font">{{adminGlobals?.email_id}}</span>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+        <ion-list class="menu-list">
+            <button ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)" text-center class="menu-list" [disabled]="p.disable" [hidden]="p.hidden">
+            {{ p.title }}
+          </button>
+        </ion-list>
+        <ion-item class="version">
+            <span>version: {{llmAppVersion}}</span>
+        </ion-item>
+    </ion-content>
+</ion-menu>
+<!-- main navigation -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

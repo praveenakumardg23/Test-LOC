@@ -1,0 +1,56 @@
+<!--
+  Generated template for the TicketTransferPopupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content padding swipeAll (swipe)="closemodal($event, '')" class="ticket-transfer-content">
+  <ion-grid class="loader" *ngIf="loader">
+    <ion-spinner class="img-spinner" name="circles"></ion-spinner>
+  </ion-grid>
+  <form [formGroup]="transferTicketForm">
+    <ion-grid class="validation-popup">
+      <ion-row text-right class="close">
+        <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="closemodal($event,true)"></ion-icon>
+      </ion-row>
+      <ion-row text-center class="popup-img">
+        <ion-segment color="black" name="type" formControlName="type" [(ngModel)]="type" padding-vertical>
+          <ion-segment-button style="border-radius: 50px 0px 0px 50px;border: .5px solid black;" value="Email"
+            (click)="onSelect('Email')">Email
+          </ion-segment-button>
+          <ion-segment-button style="border-radius: 0px 50px 50px 0px;border: .5px solid black;" value="Text"
+            (click)="onSelect('Text')">Text
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
+      <ion-row text-center class="popup-msg" [ngSwitch]="type">
+        <p no-margin *ngSwitchCase="'Email'">Enter the email you would like to share the ticket with</p>
+        <p no-margin *ngSwitchCase="'Text'">Enter the phone number you would like to share the ticket with</p>
+      </ion-row>
+      <ion-row>
+        <ion-item *ngIf="type == 'Email'">
+          <ion-input type="text" formControlName="email" [(ngModel)]="emailData" placeholder="name@email.com"
+            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$" required
+            (ionChange)="onInputChange(type, $event)">
+          </ion-input>
+        </ion-item>
+        <p class="error-text-message" no-margin padding-left *ngIf="type == 'Email' && displayErrorMessage">Please enter
+          valid email address.</p>
+        <ion-item *ngIf="type == 'Text'">
+          <ion-input formControlName="text" [(ngModel)]="textData" placeholder="(111)-222-3333"
+            (keydown)="onInputChange(type, $event)">
+          </ion-input>
+        </ion-item>
+        <p class="error-text-message" no-margin padding-left *ngIf="type == 'Text' && displayErrorMessage">Please enter
+          valid phone number.</p>
+      </ion-row>
+      <ion-row margin>
+        <button ion-button block outline class="send-btn" (click)="onSend()">SEND</button>
+        <!-- [disabled]="type == 'Email' ? !transferTicketForm.get('email').valid : !transferTicketForm.get('text').valid" -->
+      </ion-row>
+      <!-- <ion-row text-center class="swipe-up">
+        <img src="../../assets/imgs/arrow-up-gif.gif" width="30px" height="30px" />
+      </ion-row> -->
+    </ion-grid>
+  </form>
+</ion-content>

@@ -1,0 +1,73 @@
+<ion-header>
+    <ion-navbar align-title="center">
+        <ion-buttons left>
+            <button ion-button menuToggle left>
+        <ion-icon name="menu" class="color"></ion-icon>
+      </button>
+        </ion-buttons>
+        <ion-title middle center text-center>My Orders</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)" class="ionrefresher-cls">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="crescent">
+        </ion-refresher-content>
+    </ion-refresher>
+    <ion-segment color="black" [(ngModel)]="Orders" ion-fixed padding>
+        <ion-segment-button value="TODAY" (click)="onOrderData('today')">TODAY
+        </ion-segment-button>
+        <ion-segment-button value="UPCOMING" (click)="onOrderData('upcoming')" [disabled]="disableFlag || loader">UPCOMING
+        </ion-segment-button>
+        <ion-segment-button value="PAST" (click)="onOrderData('past')" [disabled]="disableFlag || loader">PAST
+        </ion-segment-button>
+    </ion-segment>
+    <ion-spinner class="img-spinner" name="circles" *ngIf="loader"></ion-spinner>
+    <div [ngSwitch]="Orders" class="events-list">
+        <ion-list>
+            <ion-item *ngFor="let e of orders;let i = index" class="event-item">
+                <ion-grid no-padding>
+                    <ion-row class="event-row">
+                        <ion-col col-5 col-sm-4 col-md-4 class="img-col" align="center" style="background:transparent url('assets/imgs/loader.gif') no-repeat scroll center center;background-size: 30px 30px;">
+                            <img [src]="e.event_image == '' ? this.url : e.event_image" [ngClass]="{'default-image': e.event_image == '' ,'event-image': e.event_image != ''}" />
+                            <ion-icon name="open-outline" class="open-order-detail" (click)="openEventDetails(e)"></ion-icon>
+                        </ion-col>
+                        <ion-col col-7 col-sm-8 col-md-8>
+                            <ion-row class="event-name">
+                                <ion-grid text-wrap>
+                                    {{e.event_name == null ? '' : e.event_name | titlecase}}
+                                </ion-grid>
+                            </ion-row>
+                            <ion-row class="event-details">
+                                <ion-grid class="card-details">
+                                    <ion-row>
+                                        <ion-col col-6 style="color:#4D8CF4">
+                                            <ion-icon ios="ios-calendar-outline" md="md-calendar" class="margin-right"></ion-icon> {{e.event_date != 'Not available' ? (e.event_date | date:'d MMM y') :(e.event_date)}}
+                                        </ion-col>
+                                        <ion-col col-6>
+                                            <ion-icon ios="ios-time-outline" md="md-time" class="margin-right"></ion-icon> {{(e.event_time == '' || e.event_time == null )? '12:00 AM': e.event_time}}
+                                        </ion-col>
+                                    </ion-row>
+                                    <ion-row>
+                                        <ion-col col-6 class="venue-name" (click)="showVenuePopOver($event,e)">
+                                            <ion-icon ios="ios-pin-outline" md="md-pin" class="margin-right"></ion-icon> {{e.event_venue == '' ? 'Not available' : e.event_venue| titlecase}}
+                                        </ion-col>
+                                        <ion-col col-6>
+                                            <ion-icon ios="ios-pricetag" md="md-pricetag" class="margin-right"></ion-icon>
+                                            {{e.num_of_tickets}} Tickets
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-grid>
+                            </ion-row>
+                            <ion-row justify-content-center><button ion-button block outline color="btn-clr" class="card-view-details" (click)="onViewDetails(e)">View Details</button></ion-row>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+        </ion-list>
+        <ion-item *ngIf="orderLength == 0">
+            <ion-label>{{noDataFoundMsg}}</ion-label>
+        </ion-item>
+    </div>
+</ion-content>

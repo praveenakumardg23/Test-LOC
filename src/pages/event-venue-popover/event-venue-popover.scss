@@ -1,0 +1,26 @@
+page-event-venue-popover {
+    ion-navbar.toolbar {
+        min-height: 40px !important;
+    }
+    ion-grid>.event-name {
+        font-weight: 700;
+        position: relative;
+        left: 0;
+        right: 0;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    ion-grid>.event-location {
+        margin-top: 10px;
+        margin-bottom: 5px;
+        position: relative;
+        left: 0;
+        right: 0;
+        margin-right: auto;
+        margin-left: auto;
+        word-break: break-all;
+    }
+    .toolbar-title {
+        font-size: 1.5rem;
+    }
+}

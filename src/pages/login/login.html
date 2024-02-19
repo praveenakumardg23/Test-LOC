@@ -1,0 +1,28 @@
+<ion-content padding>
+    <ion-grid>
+        <ion-row class="logo-wrapper">
+            <ion-col col-12 class="logo">
+                <img src="assets/imgs/login-logo.png">
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <form (ngSubmit)="onLogin()" #f="ngForm">
+                    <ion-list inset>
+                        <ion-item class="input-field-wrap" [ngClass]="{'submitted':submitted}" no-lines>
+                            <ion-input type="email" name="username" placeholder="USERNAME/EMAIL" class="input-field" email ngModel required #email="ngModel" (focus)="scrollTo()"></ion-input>
+                        </ion-item>
+                        <ion-item class="input-field-wrap" [ngClass]="{'submitted':submitted}" no-lines>
+                            <ion-input type="password" name="password" placeholder="PASSWORD" class="input-field" ngModel required (focus)="scrollTo()"></ion-input>
+                        </ion-item>
+                        <ion-row justify-content-center>
+                            <button type="submit" class="login-button" ion-button round ion-button color="dark">Login</button>
+                        </ion-row>
+                    </ion-list>
+                </form>
+            </ion-col>
+        </ion-row>
+        <ion-row justify-content-center class="custom-text"><a (click)="redirectTo('forgotPassword')" class="forgot-password">FORGOT PASSWORD?</a></ion-row>
+        <ion-row justify-content-center class="custom-text newuser">NEW USER? <span class="sign-up"><a (click)="redirectTo('signUp')">SIGN UP</a></span></ion-row>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,54 @@
+page-eventsdate-popover {
+    .fixed-content,
+    .scroll-content {
+        margin-top: 0px !important;
+    }
+    .scroll-content {
+        padding: 16px !important;
+    }
+    ion-header {
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+    }
+    ion-navbar.toolbar {
+        min-height: 40px;
+    }
+    .eventsdate-list {
+        margin-bottom: 0px !important;
+    }
+    .toolbar-title-md,
+    .toolbar-background-ios {
+        font-size: 1.3rem;
+    }
+    ion-label.label {
+        margin: 0px;
+    }
+    .popover-md .popover-content {
+        border-radius: 5px;
+    }
+    .datedisplay-header {
+        padding: 0px 16px !important;
+        font-weight: 500;
+        font-size: 1.3rem;
+        border-bottom: 2px solid #eba821 !important;
+        line-height: 20px;
+    }
+    .datedisplay-header>ion-row {
+        padding: 6px
+    }
+    .datedisplay-list {
+        max-height: 150px;
+        overflow: scroll;
+        margin-bottom: 5px
+    }
+    .datedisplay-grid {
+        padding: 0px 16px !important;
+    }
+    ion-grid>.datedisplay-row {
+        font-size: 1.3rem;
+        padding: 6px;
+    }
+}

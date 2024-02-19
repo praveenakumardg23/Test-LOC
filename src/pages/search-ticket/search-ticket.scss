@@ -1,0 +1,138 @@
+page-search-ticket {
+    .img-spinner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    .search-ticket-wrapper>.search-bar>ion-row {
+        height: 35px !important;
+    }
+    .search-ticket-wrapper>.search-bar> {
+        background-color: #7c7b78;
+        padding: 16px;
+    }
+    .searchbar-md .searchbar-input,
+    .searchbar-ios .searchbar-input {
+        border-radius: 25px;
+        line-height: 2rem;
+    }
+    .searchbar-md .searchbar-search-icon,
+    .searchbar-ios .searchbar-search-icon {
+        top: 7px;
+    }
+    .searchbar-ios,
+    .searchbar-md {
+        background-color: #7c7b78;
+    }
+    .search-ticket-wrapper {
+        background-color: #f6f6f6;
+    }
+    .event-name {
+        font-weight: 700;
+        font-size: 1.6rem;
+    }
+    .selected-event {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background-color: #fff;
+        padding-bottom: 5px;
+    }
+    .selected-event>ion-row {
+        background-color: #f6f6f6;
+    }
+    .ticket-table {
+        background-color: white;
+        border-radius: 2px;
+    }
+    .table-header {
+        font-weight: 600;
+        font-size: 1.4rem;
+        height: 48px;
+        border-bottom: 1px solid #ddd;
+        position: sticky;
+        top: 55px;
+        z-index: 1;
+        background-color: white;
+        padding: 10px 5px 0px 10px;
+    }
+    .table-content {
+        border-top: 1px solid #ddd;
+    }
+    .ticketdata-list {
+        padding: 0px 5px 0px 5px;
+    }
+    .scan-button {
+        width: 100%;
+        color: color($colors, dark);
+        background-color: color($colors, llm);
+        height: 30px;
+    }
+    .ticket-table>ion-list>div>.table-content>ion-col {
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        font-size: 1.3rem;
+    }
+    .back-button {
+        z-index: 1;
+    }
+    .error-msg {
+        margin-left: 10px;
+    }
+    @media (max-width: 320px) {
+        .error-msg {
+            margin-left: 10px;
+            width: 90%;
+            padding-left: 0px !important;
+            padding-right: 0px;
+            text-overflow: ellipsis;
+            overflow: hidden !important;
+            -webkit-line-clamp: 2;
+            height: 30px !important;
+            display: -webkit-box;
+            line-height: 1;
+            padding: 5px 0px 0px 0px;
+            font-size: 1.2rem;
+        }
+    }
+    .success {
+        color: #3c763d;
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+    }
+    .failure {
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+    }
+    .scanned-datetime {
+        width: 100%;
+        font-size: 1.1rem;
+        position: absolute;
+    }
+    .scanned-date {
+        position: relative;
+        right: 0;
+        left: 0;
+        margin: auto;
+        margin-bottom: 2px;
+    }
+    .scanned-time {
+        position: relative;
+        right: 0;
+        left: 0;
+        margin: auto;
+    }
+    .display-date {
+        padding: 5px;
+        font-weight: 600;
+        background-color: #f6f6f6;
+        border-radius: 5px;
+        margin-bottom: 4px;
+        margin-top: 4px;
+    }
+}

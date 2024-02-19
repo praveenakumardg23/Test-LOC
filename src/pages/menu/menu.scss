@@ -1,0 +1,59 @@
+page-menu {
+    .bar-button {
+        color: color($colors, dark) !important;
+    }
+    .menu {
+        background: color($colors, llm)
+    }
+    .email-display {
+        font-size: 13px;
+    }
+    .name-display {
+        font-weight: bold
+    }
+    .menu-list .item-inner {
+        background-image: none;
+    }
+    .menu-list .item-inner {
+        // border-bottom: .55px solid color($colors, llm) !important;
+        font-size: 14px;
+        height: 50px;
+        font-weight: 600;
+    }
+    ion-list>button {
+        border-bottom: .55px solid color($colors, llm) !important;
+    }
+    .item-block:last-child {
+        border-bottom: .55px solid #c8c7cc !important;
+    }
+    .item-inner {
+        border-bottom: 0px none !important;
+    }
+    .name-display {
+        padding: 4px 8px 8px 8px;
+    }
+    .img-row {
+        padding: 10px 10px 5px 10px;
+    }
+    .img-row>ion-col {
+        height: 35%
+    }
+    .img-row>ion-col>img {
+        width: 65%;
+    }
+    .version {
+        position: absolute;
+        bottom: 2px;
+        text-align: right;
+        font-size: 12px;
+        color: #ccc;
+    }
+    .fullname {
+        font-size: 16px;
+        font-weight: bolder;
+    }
+    .adminGlobals-load {
+        display: block;
+        margin: auto;
+    }
+}

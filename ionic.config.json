@@ -1,0 +1,7 @@
+{
+  "name": "localLevelMobile",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

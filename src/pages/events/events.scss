@@ -1,0 +1,322 @@
+page-events {
+    ion-segment {
+        // height: 50px;
+        background-color: #7c7b78;
+        padding: 15px;
+    }
+    .segment-activated {
+        border-radius: 30px !important;
+        border-bottom-width: 0px !important;
+        background-color: black;
+        color: white;
+        padding-top: 2px;
+    }
+    .segment-button:not(:segment-activated) {
+        border-width: 0px !important;
+        border-style: none !important;
+        border-bottom-width: 0px !important;
+        border-bottom-style: none !important;
+        padding-top: 2px;
+    }
+    .segment-md-black .segment-button.segment-activated {
+        border-radius: 30px !important;
+        border-bottom-width: 0px !important;
+        background-color: black;
+        color: white;
+        padding-top: 2px;
+    }
+    .segment-md .segment-button {
+        border-width: 0px !important;
+        border-style: none !important;
+        border-bottom-width: 0px !important;
+        border-bottom-style: none !important;
+        padding-top: 2px;
+    }
+    .scroll-content {
+        padding: 0px !important;
+    }
+    .events-list {
+        margin-top: 57px;
+    }
+    .card-details {
+        font-size: 10px;
+        color: #bdbdbd;
+        width: 90%;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .card-details>ion-row {
+        text-align: left;
+    }
+    .card-view-details {
+        width: 90%;
+        height: 30px;
+    }
+    .event-row {
+        height: 125px;
+    }
+    .event-row>ion-col {
+        height: 100%;
+    }
+    .event-row>ion-col>ion-img {
+        height: 100%;
+        width: 100%;
+        border-radius: 4px;
+    }
+    .event-details {
+        text-align: center;
+    }
+    .event-row>.img-col {
+        padding-bottom: 0px;
+        border: 1px dashed #efefef;
+        border-radius: 5px;
+    }
+    .event-row>.img-col>img {
+        border-radius: 5px;
+        padding: 2px;
+        /** img center **/
+    }
+    .default-image {
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .open-order-detail {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        color: #eba821;
+        font-weight: 500;
+    }
+    @media (max-width: 320px) {
+        .item-ios {
+            padding-left: 5px;
+        }
+        .ion-content {
+            border-radius: 10px !important;
+        }
+    }
+    .event-image {
+        width: 100%;
+        height: 100%;
+    }
+    .event-name>ion-grid {
+        width: 90%;
+        padding-left: 0px !important;
+        padding-right: 0px;
+        text-overflow: ellipsis;
+        overflow: hidden !important;
+        -webkit-line-clamp: 2;
+        height: 30px !important;
+        display: -webkit-box;
+        line-height: 1;
+        padding: 5px 0px 0px 0px;
+        font-size: 12px;
+    }
+    .event-name {
+        height: 30px
+    }
+    .event-details>.card-details>ion-row>.venue-name {
+        text-overflow: ellipsis;
+        overflow: hidden !important;
+        color: #FE7569;
+    }
+    .label {
+        margin-bottom: 6px;
+        margin-top: 6px;
+        margin-right: 0px;
+    }
+    .img-loaded+ion-spinner {
+        display: none;
+    }
+    .img-spinner {
+        position: absolute;
+        top: 45%;
+        left: 42%;
+        right: 42%;
+    }
+    ion-img.img-loaded img {
+        height: 100%;
+        width: 100%
+    }
+    ion-list {
+        margin-top: 70px !important;
+        margin-bottom: 12px !important;
+    }
+    .red {
+        color: red !important;
+    }
+    .green {
+        color: green !important;
+    }
+    .margin-right {
+        margin-right: 2px;
+    }
+    .img-spinner {
+        display: block;
+        margin: auto;
+    }
+    .item-block:first-child {
+        border-top: 0px !important;
+    }
+    .default-img {
+        height: 90px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .platform-ipad .default-img {
+        height: 90px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .ionrefresher-cls {
+        z-index: 1;
+        margin-top: 50px
+    }
+    .event-item {
+        border-bottom: .1px solid #efefef;
+    }
+}
+
+.searchalert>.alert-wrapper {
+    background-color: #fff !important;
+    max-width: 325px;
+}
+
+.searchalert.alert-md>.alert-wrapper {
+    border-radius: 13px;
+}
+
+.searchalert.alert-md .alert-input-group {
+    padding-bottom: 0px
+}
+
+.searchalert>.alert-wrapper>.alert-button-group>.alert-button-ios {
+    margin-bottom: 15px;
+    border-top: 0;
+    color: color($colors, dark);
+}
+
+.searchalert>.alert-wrapper>.alert-button-group>.alert-button-md {
+    margin-bottom: 10px;
+    color: color($colors, dark);
+}
+
+.searchalert>.alert-wrapper>.alert-button-group>.alert-button-md>.button-inner {
+    width: 100%;
+    padding: 10px;
+    background-color: color($colors, llm);
+    border-radius: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 1.2rem;
+}
+
+.searchalert>.alert-wrapper>.alert-button-group>.alert-button-md {
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.searchalert>.alert-wrapper>.alert-button-group>.alert-button-ios>.button-inner {
+    width: 50%;
+    left: 0;
+    height: 100%;
+    background-color: color($colors, llm);
+    right: 0;
+    margin: auto;
+    border-radius: 25px;
+}
+
+.searchalert>.alert-wrapper>.alert-message {
+    color: #a94442;
+}
+
+.alert-ios .alert-input {
+    border-radius: 5px;
+    border: 0.55px solid #ccc;
+}
+
+.alert-md .alert-input {
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 0.55px solid #ccc;
+    background-color: #fff;
+    padding: 6px;
+}
+
+ion-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+ion-modal {
+    padding-bottom: 45%;
+    padding-top: 45% !important;
+    padding-left: 10%;
+    padding-right: 10%;
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    contain: strict;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-wrapper {
+    border-radius: 10px !important;
+    height: 300px;
+}
+
+.transfer-ticket-class > .modal-wrapper {
+    height: 310px !important;
+}
+
+ion-app.cameraView,
+ion-app.cameraView ion-content,
+ion-app.cameraView .nav-decor {
+    background: transparent none !important;
+}
+
+ion-app.cameraView {
+    /* To show image border */
+    background-image: url("./../assets/imgs/camera_overlay_yellow.gif") !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    // border: 2px solid #eba821;
+    border-bottom: 56px solid rgba(0, 0, 0, 0.2);
+}
+
+ion-app.nocameraView {
+    border-top: 0px none;
+    border-bottom: 0px none;
+}
+
+body.cameraCloseIcon {
+    background-image: url("./../assets/imgs/close.png") !important;
+    background-position: 4% 4% !important;
+    background-repeat: no-repeat !important;
+    background-size: 30px 30px;
+}
+
+body.cameraCloseIcon:before {
+    content: 'Scan QR Code';
+    position: absolute;
+    bottom: 15px;
+    z-index: 1;
+    font-size: 1.6rem;
+    font-weight: 400;
+    // color: black;
+    color: #eba821;
+    text-shadow: -1px 0 #eba821, 0 1px eba821, 1px 0 #eba821, 0 -1px #eba821;
+    width: 100%;
+    text-align: center;
+}

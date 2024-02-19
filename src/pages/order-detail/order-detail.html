@@ -1,0 +1,173 @@
+<!--
+  Generated template for the OrderDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header *ngIf="eventData.vaidate_attendance == '3'">
+  <ion-navbar>
+    <ion-title>Ticket Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding *ngIf="eventData.vaidate_attendance == '3'">
+  <div style="height: 100%;background-color: #ccc;">
+    <ng-container *ngTemplateOutlet="ticketCards"></ng-container>
+  </div>
+</ion-content>
+
+<div style="height: 100%;background-color: #ccc;" *ngIf="eventData.vaidate_attendance != '3'" class="custom-ticket-card">
+  <ng-container *ngTemplateOutlet="ticketCards"></ng-container>
+</div>
+
+<ng-template #ticketCards>
+  <ion-grid style="height: inherit;padding: 0;background-color: black;" [hidden]="ticketCoachMarkFlag">
+    <ion-row justify-content-center align-items-center
+      style="height: 100vh;z-index: 4;background-color: rgba(0, 0, 0, 0.85);">
+      <div style="height: 30%;width: 100%;text-align: center;">
+
+      </div>
+      <div style="height: 30%;width: 100%;text-align: center;z-index: 4">
+        <p style="color: white;">
+          <ion-icon name="arrow-round-up"></ion-icon> &nbsp;Swipe Up For Next Ticket
+        </p>
+        <p style="color: white;">
+          <ion-icon name="arrow-round-down"></ion-icon> &nbsp;Swipe Down For Previous Ticket
+        </p>
+        <button ion-button small (click)="onGotIt()"> Got it</button>
+      </div>
+      <div style="height: 30%;width: 100%;text-align: center;">
+
+      </div>
+    </ion-row>
+  </ion-grid>
+  <ion-spinner class="img-spinner" name="circles" *ngIf="loader"></ion-spinner>
+  <div *ngIf="loader" class="init-card animated pulse"
+    [ngClass]="{'custom-card-position':(eventData.vaidate_attendance == '3')}">
+
+  </div>
+  <a (click)="onSwipeArrow(8)"><img src="../../assets/imgs/arrow-up-gif.gif" class="swipe-up-arrow"
+      *ngIf="!loader && !((ticketDataLength-1) == count)"
+      [ngClass]="{'custom-card-position':(eventData.vaidate_attendance == '3')}"></a>
+  <div swipeAll (swipe)="swipeScreen($event)" class="animated bounce" id="select-card-{{i}}"
+    *ngFor="let topTicket of ticketData;let i = index"
+    [ngClass]="{'custom-card-position':(eventData.vaidate_attendance == '3')}">
+    <ion-grid no-padding *ngIf="!loader" class="qrcode-wrapper" id="select-header-{{i}}">
+      <ion-row padding style="padding-bottom: 5px;">
+        <ion-col col-10 class="event-name">
+          {{topTicket?.event_name | titlecase}}
+        </ion-col>
+        <ion-col col-2>
+          <button ion-button right color="light" (click)="onShareButton(topTicket)"
+            [disabled]="(!topTicket?.scan_allowed) || (topTicket?.shared_status)">
+            <ion-icon ios="ios-share" md="md-share" class="color"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="event-qrcode">
+        <a (click)="flipImage(i,topTicket.ticket_id)" class="animated"
+          [ngClass]="{'flipInY':!(topTicket?.flipImageFlag)}">
+          <div class="flip-back-image animated" *ngIf="topTicket?.flipImageFlag"
+            [ngClass]="{'flipInY': topTicket?.flipImageFlag }" style="z-index: 6 !important;width: 100%;">
+            <div>
+              <ion-grid no-padding>
+                <ion-row class="first-row">
+
+                  <p *ngIf="topTicket.scanned_status != 0">
+                    Last Scanned on
+                  </p>
+                  <p *ngIf="topTicket.scanned_status != 0">
+                    {{topTicket?.last_scanned | date:'d MMM,yyyy'}} @ {{topTicket?.last_scanned | date:'shortTime'}}
+                    {{topTicket?.timezone_code}}
+                  </p>
+
+                </ion-row>
+                <ion-row class="middle-row" *ngIf="topTicket.shared_status != 0">
+                  <p>
+                    Ticket Shared with
+                  </p>
+                  <p>
+                    {{topTicket?.shared_email}}
+                  </p>
+                </ion-row>
+                <ion-row class="last-row" *ngIf="topTicket.ticket_status != 1">
+                  <p>
+                    Click to View QR Code
+                  </p>
+                </ion-row>
+                <ion-row class="last-row" *ngIf="topTicket.ticket_status == 1">
+                  <p>
+                    Ticket Cancelled
+                  </p>
+                </ion-row>
+
+              </ion-grid>
+            </div>
+          </div>
+          <img [src]="topTicket?.qr_code" [ngClass]="{'qrcode-opacity': topTicket?.flipImageFlag}" />
+        </a>
+      </ion-row>
+
+    </ion-grid>
+    <ion-grid *ngIf="!loader" no-padding class="ticket" id="select-line-{{i}}">
+      <ion-row no-padding>
+        <ion-col col-1>
+        </ion-col>
+        <ion-col col-10>
+        </ion-col>
+        <ion-col col-1>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid *ngIf="!loader" id="select-content-{{i}}">
+      <ion-row class="ticket-detail">
+        <ion-col col-8>
+          <ion-grid>
+            <ion-row class="first-row">
+              <ion-grid>
+                <ion-row>
+                  Date
+                </ion-row>
+                <ion-row>
+                  {{topTicket?.event_date}}
+                </ion-row>
+              </ion-grid>
+            </ion-row>
+            <ion-row class="middle-row">
+              <ion-grid>
+                <ion-row>
+                  Time
+                </ion-row>
+                <ion-row>
+                  {{topTicket?.event_time == '' ? 'Not Available' : topTicket?.event_time}}
+                </ion-row>
+              </ion-grid>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+        <ion-col col-4 class="ticket-number-col">
+          <h6> {{topTicket?.access_type == 'Seat Number' ? 'Seat' : 'Ticket'}} </h6>
+          <div class="ticket-number">
+            {{topTicket?.seat_number}} {{topTicket?.ticket_number}}
+          </div>
+        </ion-col>
+        <ion-grid style="position: relative;top: -32px;margin: 5px;">
+          <ion-row class="location-row">
+            <ion-grid>
+              <ion-row style="font-weight: 600;">
+                Location
+              </ion-row>
+              <ion-row style="font-weight: 400;color: #aeaeae;padding: 4px 0px;font-size: 1.3rem;">
+                <!-- Not Available -->
+                {{topTicket?.event_location}}
+              </ion-row>
+            </ion-grid>
+          </ion-row>
+        </ion-grid>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <a (click)="onSwipeArrow(8)"><img src="../../assets/imgs/arrow-up-gif.gif" class="swipe-down-arrow"
+      *ngIf="!(count == 0)" [ngClass]="{'custom-card-position':(eventData.vaidate_attendance == '3')}"></a>
+</ng-template>

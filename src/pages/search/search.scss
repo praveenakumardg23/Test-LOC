@@ -1,0 +1,179 @@
+page-search {
+    .searchbar-input {
+        padding-right: 25px !important;
+    }
+    .scroll-content {
+        padding: 0px !important;
+    }
+    .events-list {
+        margin-top: 57px;
+    }
+    .card-details {
+        font-size: 10px;
+        color: #bdbdbd;
+        width: 90%;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .card-details>ion-row {
+        text-align: left;
+    }
+    .card-view-details {
+        width: 90%;
+        height: 30px;
+    }
+    .event-row {
+        height: 125px;
+    }
+    .event-row>ion-col {
+        height: 100%;
+    }
+    .event-row>ion-col>ion-img {
+        height: 100%;
+        width: 100%;
+        border-radius: 4px;
+    }
+    .event-details {
+        text-align: center;
+    }
+    .event-row>.img-col {
+        padding-bottom: 0px;
+        border: 1px dashed #efefef;
+        border-radius: 5px;
+    }
+    .event-row>.img-col>img {
+        border-radius: 5px;
+        padding: 2px;
+        /** img center **/
+    }
+    .default-image {
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    @media (max-width: 320px) {
+        .item-ios {
+            padding-left: 5px;
+        }
+        .ion-content {
+            border-radius: 10px !important;
+        }
+    }
+    .event-image {
+        width: 100%;
+        height: 100%;
+    }
+    .event-name>ion-grid {
+        width: 90%;
+        padding-left: 0px !important;
+        padding-right: 0px;
+        text-overflow: ellipsis;
+        overflow: hidden !important;
+        -webkit-line-clamp: 2;
+        height: 30px !important;
+        display: -webkit-box;
+        line-height: 1;
+        padding: 5px 0px 0px 0px;
+        font-size: 12px;
+    }
+    .event-name {
+        height: 30px
+    }
+    .event-details>.card-details>ion-row>.venue-name {
+        text-overflow: ellipsis;
+        overflow: hidden !important;
+        color: #FE7569;
+    }
+    .label {
+        margin-bottom: 6px;
+        margin-top: 6px;
+        margin-right: 0px;
+    }
+    .img-loaded+ion-spinner {
+        display: none;
+    }
+    .img-spinner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    ion-img.img-loaded img {
+        height: 100%;
+        width: 100%
+    }
+    ion-list {
+        margin-top: 70px !important;
+        margin-bottom: 12px !important;
+    }
+    .red {
+        color: red !important;
+    }
+    .green {
+        color: green !important;
+    }
+    .margin-right {
+        margin-right: 2px;
+    }
+    .img-spinner {
+        display: block;
+        margin: auto;
+    }
+    .item-block:first-child {
+        border-top: 0px !important;
+    }
+    .default-img {
+        height: 90px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .platform-ipad .default-img {
+        height: 90px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .ionrefresher-cls {
+        z-index: 1;
+        margin-top: 50px
+    }
+    .event-item {
+        border-bottom: .1px solid #efefef;
+    }
+    .search-ticket-wrapper>.search-bar>ion-row {
+        height: 35px !important;
+    }
+    .search-ticket-wrapper>.search-bar> {
+        background-color: #7c7b78;
+        padding: 16px;
+    }
+    .searchbar-md .searchbar-input,
+    .searchbar-ios .searchbar-input {
+        border-radius: 25px;
+        line-height: 2rem;
+    }
+    .searchbar-md .searchbar-search-icon,
+    .searchbar-ios .searchbar-search-icon {
+        top: 7px;
+    }
+    .searchbar-ios,
+    .searchbar-md {
+        background-color: #7c7b78;
+    }
+    .search-ticket-wrapper {
+        background-color: #f6f6f6;
+    }
+    .scroll-content {
+        padding: 0px !important;
+    }
+    .ionrefresher-cls {
+        z-index: 1;
+        margin-top: 50px
+    }
+}

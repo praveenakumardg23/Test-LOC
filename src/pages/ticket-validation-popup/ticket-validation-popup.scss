@@ -1,0 +1,52 @@
+page-ticket-validation-popup {
+    .scroll-content {
+        overflow-y: hidden;
+    }
+    .validation-popup>ion-row {
+        display: block
+    }
+    .validation-popup>ion-row>ion-icon {
+        font-size: x-large;
+    }
+    .validation-popup>.popup-msg {
+        font-size: 15px;
+        font-weight: 600;
+        padding: 10px 0px 0px 0px;
+    }
+    @media (max-width: 320px) {
+        .validation-popup>.popup-msg {
+            font-size: 14px;
+        }
+    }
+    .validation-popup>.lines {
+        position: absolute;
+        bottom: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+    }
+    .validation-popup>.lines>.f-line {
+        width: 40px;
+        border-bottom: 2px solid black;
+        display: block;
+        margin: auto;
+        padding-top: 15px;
+    }
+    .validation-popup>.lines>.s-line {
+        width: 60px;
+        border-bottom: 2px solid black;
+        display: block;
+        margin: auto;
+        padding-top: 2px;
+    }
+    .modal-wrapper {
+        height: 320px;
+    }
+    .swipe-up {
+        position: absolute;
+        bottom: 5px;
+        right: 0;
+        left: 0;
+    }
+}

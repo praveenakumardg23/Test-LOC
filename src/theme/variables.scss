@@ -1,0 +1,89 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+@import "ionic.globals";
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+$colors: ( primary: #0073ba, secondary: #32db64, danger: #f53d3d, light: #f4f4f4, dark: #222, llm: #eba821, black: #000, btn-clr: #7c7b78);
+$tabs-ios-tab-text-color-active: color($colors, llm);
+$tabs-ios-tab-icon-color-active: color($colors, llm);
+$tabs-ios-tab-font-size: 12px;
+$tabs-ios-tab-icon-size: 40px;
+$segment-button-ios-border-width: 0px;
+$segment-button-ios-height: 3.5rem;
+$segment-button-ios-line-height: 3.2rem;
+$toolbar-ios-title-font-size: 2rem;
+$toolbar-ios-background: color($colors, llm);
+$toolbar-ios-title-text-color: color($colors, black);
+$tabs-md-tab-text-color-active: color($colors, llm);
+$tabs-md-tab-icon-color-active: color($colors, llm);
+$tabs-md-tab-font-size: 12px;
+$tabs-md-tab-icon-size: 40px;
+$segment-button-md-border-width: 0px;
+$segment-button-md-height: 3.5rem;
+$segment-button-md-line-height: 3.2rem;
+$toolbar-md-title-font-size: 2rem;
+$toolbar-md-background: color($colors, llm);
+$toolbar-md-title-text-color: color($colors, black);
+$refresher-height: 120px;
+$refresher-height: 80px;
+$refresher-text-font-size: 14px;
+$refresher-icon-color: color($colors, llm);
+$refresher-text-color: color($colors, llm);
+$spinner-ios-circles-color:color($colors, llm);
+$spinner-md-circles-color: color($colors, llm);
+$spinner-ios-ios-color:color($colors, llm);
+$spinner-md-ios-color:color($colors, llm);
+$infinite-scroll-loading-color:color($colors, llm);
+$infinite-scroll-loading-text-color:color($colors, llm);
+ion-app.cameraView ion-nav {
+    opacity: 0
+}
+.contact-popover.modal-wrapper {
+    height: 20%;
+    top: 80%;
+    position: absolute; 
+    display: block;  
+ }
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+@import "ionic.theme.default";
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+@import "ionic.ionicons";
+// Fonts
+// --------------------------------------------------
+@import "roboto";
+@import "noto-sans";

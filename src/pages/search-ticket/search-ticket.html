@@ -1,0 +1,115 @@
+<!--
+  Generated template for the SearchTicketPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title center text-center>Search Ticket</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content class="search-ticket-wrapper">
+    <ion-grid class="search-bar" style="background-color: #7c7b78;padding: 10px 10px 10px 10px">
+        <!-- <ion-row>
+            <ion-searchbar animated [(ngModel)]="searchInput" (ionInput)="onSearchBarInput($event)" (ionCancel)="onSearchBarCancel()">
+            </ion-searchbar>
+        </ion-row> -->
+        <form action=".">
+            <ion-row>
+                <ion-searchbar type="search" animated (search)="onSearchBarInput($event)" (ionClear)="onSearchBarCancel()" placeholder="Name, Ticket/Seat Number"></ion-searchbar>
+            </ion-row>
+        </form>
+    </ion-grid>
+    <ion-grid class="ticket-table" no-padding>
+        <ion-spinner class="img-spinner" name="circles" *ngIf="loader"></ion-spinner>
+        <ion-grid class="selected-event" [hidden]="loader">
+            <ion-row>
+                <ion-col text-center style="font-size: 1.1rem;color: #747474;">Displaying tickets for</ion-col>
+            </ion-row>
+            <ion-row text-center>
+                <ion-col text-center class="event-name">{{getEventName() | titlecase}}</ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-row class="table-header" [hidden]="loader">
+            <ion-col col-4 text-left>
+                <a (click)="sort('buyer_sort')" style="color: #000">
+                  Name
+                  <ion-icon name="arrow-round-up" *ngIf="sortValue == 'buyer_sort' && buyerSortDesc == 'asc'"></ion-icon>
+                  <ion-icon name="arrow-round-down" *ngIf="sortValue == 'buyer_sort' && buyerSortDesc == 'desc' "></ion-icon>
+                </a>
+            </ion-col>
+            <ion-col col-3 text-left>
+                <a (click)="sort('date_sort')" style="color: #000">
+                  Date
+                  <ion-icon name="arrow-round-up" *ngIf="sortValue == 'date_sort' && dateSortDesc == 'asc'"></ion-icon>
+                  <ion-icon name="arrow-round-down" *ngIf="sortValue == 'date_sort' && dateSortDesc == 'desc' "></ion-icon>
+                </a>
+            </ion-col>
+            <ion-col col-2 text-center>
+                <a (click)="sort('seat_sort')" style="color: #000">
+                  {{isSeatMapped == 1 ? 'Seat' : 'Ticket'}}
+                  <ion-icon name="arrow-round-up" *ngIf="sortValue == 'seat_sort' && seatSortDesc == 'asc'"></ion-icon>
+                  <ion-icon name="arrow-round-down" *ngIf="sortValue == 'seat_sort' && seatSortDesc == 'desc' "></ion-icon>
+                </a>
+            </ion-col>
+            <ion-col col-3 text-center>
+                <a (click)="sort('scan_status_sort')" style="color: #000">
+                  Action
+                  <ion-icon name="arrow-round-up" *ngIf="sortValue == 'scan_status_sort' && scanStatusSortDesc == 'asc'"></ion-icon>
+                  <ion-icon name="arrow-round-down" *ngIf="sortValue == 'scan_status_sort' && scanStatusSortDesc == 'desc' "></ion-icon>
+                </a>
+            </ion-col>
+        </ion-row>
+        <ion-list class="ticketdata-list" [hidden]="loader">
+            <div *ngFor="let t of ticketsData;let i = index;">
+                <ion-row *ngIf="t.displayDate" class="display-date">
+                    {{t.event_date| date:'longDate'}}
+                </ion-row>
+                <ion-row class="table-content">
+                    <ion-col col-4 text-left>
+                        <a style="text-decoration: underline;
+                        text-decoration-color: #eba821;
+                        color: #eba821;
+                        text-decoration-style: solid;" (click)="openOrderDetails(t)"> {{t.first_name | titlecase}} {{t.last_name | titlecase}} </a>
+                    </ion-col>
+                    <ion-col col-3 text-left>
+                        <ion-row style="font-size: 1.2rem;">
+                            {{t.event_date | date:'MM/dd/yyyy'}}
+                        </ion-row>
+                        <ion-row style="font-size: 1.2rem;">
+                            {{t.event_time}}
+                        </ion-row>
+                    </ion-col>
+                    <ion-col col-2 text-center>
+                        {{t.access_type== 'Seat Number'? t.seat_number : t.ticket_number}}
+                    </ion-col>
+                    <ion-col col-3 text-center>
+                        <button type="button" class="scan-button" [disabled]="i === clickedId || (i == 0 && clickedId == 0)" ion-button round ion-button color="dark" (click)="onScanTickets(t,i)" [ngClass]="{'success': (i == clickedIndex && this.apiStatus == 'success'),'failure': (i == clickedIndex && this.apiStatus == 'failure')}">
+                        <img src="assets/imgs/transparent-loader.gif" width="20" height="20" *ngIf="i === clickedId || (i == 0 && clickedId == 0)"/>
+                        <span *ngIf="i != clickedId && t.button_value == 'SCAN'">{{t.button_value}}</span>
+                        <ion-grid class="scanned-datetime" *ngIf="i != clickedId && t.button_value != 'SCAN'">
+                          <ion-row class="scanned-date">
+                            {{t.button_value | date:'MM/dd/yyyy'}}
+                          </ion-row>
+                          <ion-row class="scanned-time">
+                            {{t.button_value | date:'shortTime'}}
+                          </ion-row>
+                      </ion-grid>
+                    </button>
+                    </ion-col>
+                </ion-row>
+            </div>
+            <ion-row *ngIf="noTicketsData">
+                <ion-label class="error-msg">No tickets based on the Search Criteria was found!</ion-label>
+            </ion-row>
+        </ion-list>
+    </ion-grid>
+
+    <ion-infinite-scroll style="background-color: white" (ionInfinite)="$event.waitFor(doInfinite($event))" [enabled]="disableInfiniteScroll">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Fetching More Tickets">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,133 @@
+<!--
+  Generated template for the TicketValidateTransferViewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>MY ORDER/TICKETS</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-spinner class="img-spinner" name="circles" *ngIf="loader"></ion-spinner>
+  <ion-segment color="black" [(ngModel)]="type" ion-fixed padding>
+    <ion-segment-button value="validate" (click)="onOrderData('validate')">Validate
+    </ion-segment-button>
+    <ion-segment-button value="transfer" (click)="onOrderData('transfer')">Transfer
+    </ion-segment-button>
+    <ion-segment-button value="view" (click)="onOrderData('view')">View
+    </ion-segment-button>
+  </ion-segment>
+  <div class="events-list">
+
+    <ion-grid *ngIf="type != 'view'" padding>
+      <ng-container *ngIf="accessTickets">
+        <ion-row class="order-row">
+          <ion-col col-4 text-center>
+            <div class="order-details">Order Number</div>
+            <div>{{accessTickets?.order_number}}</div>
+          </ion-col>
+          <ion-col col-4 text-center>
+            <div class="order-details">Order Total</div>
+            <div>${{accessTickets?.order_total}}</div>
+          </ion-col>
+          <ion-col col-4 text-center>
+            <div class="order-details">Order Date</div>
+            <div>{{accessTickets?.order_date | date:'d MMM y'}}</div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="event-row">
+          <ion-col col-5 col-sm-4 col-md-4 class="img-col" align="center" style="background:transparent url('assets/imgs/loader.gif') no-repeat scroll center center;background-size: 30px 30px;display: grid;
+            align-content: center;border: none;">
+            <img [src]="accessTickets?.event_image == '' ? this.url : accessTickets?.event_image"
+              [ngClass]="{'default-image': accessTickets?.event_image == '' }" />
+          </ion-col>
+          <ion-col col-7 col-sm-8 col-md-8 style="display: grid;align-content: center;">
+            <ion-row class="event-name" text-left>
+              <ion-grid text-wrap>
+                <a (click)="openUrlInBrower(accessTickets.event_details_url)" style="font-size: 15px;font-weight: 500;">{{accessTickets?.event_name}}</a>
+              </ion-grid>
+            </ion-row>
+            <ion-row class="event-details">
+              <ion-grid class="card-details">
+                <ion-row>
+                  <ion-col col-6>
+                    <ion-icon ios="ios-calendar-outline" md="md-calendar" class="margin-right"></ion-icon>
+                    {{accessTickets?.event_date != 'Not available' ? (accessTickets?.event_date | date:'d MMM y') :(accessTickets?.event_date)}}
+                  </ion-col>
+                  <ion-col col-6>
+                    <ion-icon ios="ios-time-outline" md="md-time" class="margin-right"></ion-icon>
+                    {{(accessTickets?.event_time == '' || accessTickets?.event_time == null )? '12:00 AM': accessTickets?.event_time}}
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row class="table-header">
+          <ion-col [attr.col-2]="accessTickets.has_seat > 0 ? '' : null "
+            [attr.col-3]="!(accessTickets.has_seat > 0) ? '' : null" text-center>
+            #
+          </ion-col>
+          <ion-col [attr.col-4]="accessTickets.has_seat > 0 ? '' : null"
+            [attr.col-6]="!(accessTickets.has_seat > 0) ? '' : null" text-center>
+            Type
+          </ion-col>
+          <ion-col col-4 text-center *ngIf="accessTickets.has_seat > 0">
+            Seat
+          </ion-col>
+          <ion-col [attr.col-2]="accessTickets.has_seat > 0 ? '' : null"
+            [attr.col-3]="!(accessTickets.has_seat > 0) ? '' : null" text-center>
+            <ion-checkbox [(ngModel)]="masterCheck" (click)="checkMaster($event)"
+              [disabled]="type == 'validate' ? masterCheckDisableValidate : masterCheckDisableTransfer"></ion-checkbox>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let t of ticketsData;let i = index;" class="table-content" style="align-items: center;">
+          <ion-col [attr.col-2]="accessTickets.has_seat > 0 ? '' : null"
+            [attr.col-3]="!(accessTickets.has_seat > 0) ? '' : null" text-center class="ticket-id">
+            <a (click)="redirectToViewTickets(t, i)">{{t.ticket_num}}</a>
+          </ion-col>
+          <ion-col [attr.col-4]="accessTickets.has_seat > 0 ? '' : null"
+            [attr.col-6]="!(accessTickets.has_seat > 0) ? '' : null" text-center>
+            {{t.type}}
+          </ion-col>
+          <ion-col col-4 text-center *ngIf="accessTickets.has_seat > 0">
+            {{t.seats}}
+          </ion-col>
+          <ion-col [attr.col-2]="accessTickets.has_seat > 0 ? '' : null"
+            [attr.col-3]="!(accessTickets.has_seat > 0) ? '' : null" text-center>
+            <ion-checkbox [(ngModel)]="t.isChecked"
+              *ngIf="!((type=='validate') ? (!t.is_can) : !(t.shared_ticket == ''))" (ionChange)="checkEvent()">
+            </ion-checkbox> 
+            <ion-checkbox *ngIf="((type=='validate') ? (!t.is_can) : !(t.shared_ticket == ''))" [disabled]="((type=='validate') ? (!t.is_can) : !(t.shared_ticket == ''))"></ion-checkbox>
+            <!-- is_can vaalue zero disable and share_ticket contains value disable -->
+          </ion-col>
+          <ion-col col-12 class="information-message" *ngIf="t.last_scan_dt">{{t.last_scan_dt}}</ion-col>
+          <ion-col col-12 class="information-message" *ngIf="t.shared_ticket">{{t.shared_ticket}}</ion-col>
+        </ion-row>
+        <ion-row margin-top>
+          <p text-center *ngIf="type == 'validate'">**Only an onsite authorized representive should press the validate
+            button**</p>
+        </ion-row>
+        <ion-row margin-top>
+          <button ion-button block outline class="custom-orange-btn" (click)="onValidateTickets()"
+            *ngIf="type == 'validate'" [disabled]="getStatus('validate')">VALIDATE</button>
+          <button ion-button block outline class="custom-orange-btn" (click)="onTransferTickets()"
+            *ngIf="type == 'transfer'" [disabled]="getStatus('transfer')">TRANSFER</button>
+        </ion-row>
+      </ng-container>
+      <ion-row *ngIf="!ticketsData && !loader && accessTickets">
+        <ion-label class="error-msg">No tickets found!</ion-label>
+      </ion-row>
+    </ion-grid>
+    <ion-grid *ngIf="type == 'view'" class="order-detail-wrapper" no-padding>
+      <page-order-detail class="page-order-detail" [selectedTicketData]="selectedTicket"></page-order-detail>
+    </ion-grid>
+  </div>
+</ion-content>

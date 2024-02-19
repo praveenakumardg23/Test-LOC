@@ -1,0 +1,268 @@
+page-ticket-validate-transfer-view {
+  ion-segment {
+    // height: 50px;
+    background-color: #7c7b78;
+    padding: 15px;
+  }
+
+  .segment-activated {
+    border-radius: 30px !important;
+    border-bottom-width: 0px !important;
+    background-color: black;
+    color: white;
+    padding-top: 2px;
+  }
+
+  .segment-button:not(:segment-activated) {
+    border-width: 0px !important;
+    border-style: none !important;
+    border-bottom-width: 0px !important;
+    border-bottom-style: none !important;
+    padding-top: 2px;
+  }
+
+  .segment-md-black .segment-button.segment-activated {
+    border-radius: 30px !important;
+    border-bottom-width: 0px !important;
+    background-color: black;
+    color: white;
+    padding-top: 2px;
+  }
+
+  .segment-md .segment-button {
+    border-width: 0px !important;
+    border-style: none !important;
+    border-bottom-width: 0px !important;
+    border-bottom-style: none !important;
+    padding-top: 2px;
+  }
+
+  .scroll-content {
+    padding: 0px !important;
+  }
+
+  .events-list {
+    margin-top: 57px;
+  }
+
+  .card-details {
+    font-size: 10px;
+    // color: #bdbdbd;
+    color: #7c7b78;
+    width: 90%;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .card-details>ion-row {
+    text-align: left;
+  }
+
+  .card-view-details {
+    width: 90%;
+    height: 30px;
+  }
+
+  .event-row {
+    height: 125px;
+  }
+
+  .event-row>ion-col {
+    height: 100%;
+  }
+
+  .event-row>ion-col>ion-img {
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  .event-details {
+    text-align: center;
+  }
+
+  .event-row>.img-col {
+    padding-bottom: 0px;
+    border: 1px dashed #efefef;
+    border-radius: 5px;
+  }
+
+  .event-row>.img-col>img {
+    border-radius: 5px;
+    padding: 2px;
+    /** img center **/
+  }
+
+  .default-image {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  @media (max-width: 320px) {
+    .item-ios {
+      padding-left: 5px;
+    }
+
+    .ion-content {
+      border-radius: 10px !important;
+    }
+  }
+
+  .event-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .back-button{
+    z-index: 2;
+  }
+
+  .event-name>ion-grid {
+    width: 90%;
+    padding-left: 0px !important;
+    padding-right: 0px;
+    text-overflow: ellipsis;
+    overflow: hidden !important;
+    -webkit-line-clamp: 2;
+    height: 100% !important;
+    display: -webkit-box;
+    line-height: 1;
+    padding: 5px 0px 0px 0px;
+    font-size: 12px;
+  }
+
+  .event-name {
+    height: 100%
+  }
+
+  .event-details>.card-details>ion-row>.venue-name {
+    text-overflow: ellipsis;
+    overflow: hidden !important;
+    color: #FE7569;
+  }
+
+  .label {
+    margin-bottom: 6px;
+    margin-top: 6px;
+    margin-right: 0px;
+  }
+
+  .img-loaded+ion-spinner {
+    display: none;
+  }
+
+  .img-spinner {
+    position: absolute;
+    top: 45%;
+    left: 42%;
+    right: 42%;
+  }
+
+  ion-img.img-loaded img {
+    height: 100%;
+    width: 100%
+  }
+
+  ion-list {
+    margin-top: 70px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .order-row {
+    font-size: 13px;
+    margin-top: 10px;
+    padding: 5px;
+  }
+
+  .custom-blue {
+    color: #4D8CF4
+  }
+
+  .order-details {
+    font-weight: 500;
+  }
+
+  .table-header {
+    padding: 10px 0px;
+    margin-top: 10px;
+    border-top: 1px solid #ccc;
+  }
+
+  .table-content {
+    padding: 5px 0px;
+  }
+
+  .custom-orange-btn {
+    background-color: #eba821;
+    color: black;
+    border-color: #eba821;
+    width: 60%;
+    margin: auto;
+    border-radius: 50px;
+  }
+
+  .order-detail-wrapper {
+    // height: 100vh;
+    height: calc(100vh - 162px);
+  }
+
+  .order-detail-wrapper>.page-order-detail {
+    height: 100%;
+  }
+
+  .margin-right {
+    margin-right: 2px;
+  }
+
+  .img-spinner {
+    display: block;
+    margin: auto;
+  }
+
+  .item-block:first-child {
+    border-top: 0px !important;
+  }
+
+  .default-img {
+    height: 90px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .platform-ipad .default-img {
+    height: 90px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .ionrefresher-cls {
+    z-index: 1;
+    margin-top: 50px
+  }
+
+  .event-item {
+    border-bottom: .1px solid #efefef;
+  }
+
+  .table-content>.ticket-id>a {
+    text-decoration: underline;
+  }
+
+  .information-message {
+    font-size: 11px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    text-align: center;
+    color: green;
+  }
+
+  .table-content:nth-of-type(even) {
+    background-color: #f4f4f4;
+  }
+}

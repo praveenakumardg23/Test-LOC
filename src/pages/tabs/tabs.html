@@ -1,0 +1,9 @@
+<ion-tabs>
+    <ion-tab [root]="eventsPage" tabIcon="megaphone" tabTitle="Events" [show]="adminGlobals.user_type == 'admin'"></ion-tab>
+    <!-- <ion-tab [root]="ordersPage" tabIcon="list-box" tabTitle="Orders" enabled="false"></ion-tab>
+    <ion-tab [root]="searchPage" tabIcon="search" tabTitle="Search" enabled="false"></ion-tab> -->
+    <ion-tab [root]="ordersPage" tabIcon="list-box" tabTitle="Orders"></ion-tab>
+    <ion-tab [root]="searchPage" tabIcon="search" tabTitle="Search"></ion-tab>
+    <ion-tab tabIcon="settings" tabTitle="Settings" (ionSelect)="onSettings()"></ion-tab>
+    <ion-tab tabIcon="log-out" tabTitle="Logout" (ionSelect)="onLogout()"></ion-tab>
+</ion-tabs>

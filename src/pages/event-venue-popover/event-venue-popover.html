@@ -1,0 +1,36 @@
+<!--
+  Generated template for the EventVenuePopoverPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header showWhen="android">
+
+    <ion-navbar align-title="center">
+        <ion-title middle center text-center>{{eventName}}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+    <ion-grid class="event-venue-popover">
+        <ion-row text-center class="event-name">
+            Venue
+        </ion-row>
+        <ion-row text-center class="event-location">
+            {{eventVenue}}
+        </ion-row>
+        <ion-row text-center class="event-location">
+            {{eventLocation}}
+        </ion-row>
+    </ion-grid>
+    <ion-buttons right style="padding: 5px">
+        <button ion-button right color="llm" small (click)="shareVenueDetails(eventLocation)">
+            <ion-icon ios="ios-share" md="md-share" class="color"></ion-icon>
+        </button>
+        <button ion-button right color="llm" small (click)="navigateToMaps(eventLocation)">
+          <ion-icon ios="ios-pin" md="md-pin" class="color"></ion-icon>
+        </button>
+    </ion-buttons>
+</ion-content>

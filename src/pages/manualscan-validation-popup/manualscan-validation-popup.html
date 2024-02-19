@@ -1,0 +1,42 @@
+<!--
+  Generated template for the ManualscanValidationPopupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+
+    <ion-navbar>
+        <ion-title>manualscan-validation-popup</ion-title>
+    </ion-navbar>
+
+</ion-header> -->
+
+
+<ion-content padding swipeAll (swipe)="closemodal($event, '')" style="border-radius:10px">
+    <ion-grid class="validation-popup">
+        <ion-row text-right class="close">
+            <ion-icon ios="ios-close-circle" md="md-close-circle" (click)="closemodal($event,true)"></ion-icon>
+        </ion-row>
+        <ion-row text-center class="popup-img">
+            <img src="assets/imgs/icn_success.png" *ngIf="status" width="150px" height="150px" />
+            <img src="assets/imgs/icn_failed.png" *ngIf="!status" width="150px" height="150px" />
+        </ion-row>
+        <ion-row text-center class="popup-msg">
+            {{message}}
+            <!-- {{status ? 'Ticket Scan Success' : 'Ticket Scan Unsuccessful'}} -->
+        </ion-row>
+        <!-- <ion-row text-center class="lines">
+          <span class="f-line"></span>
+          <span class="s-line"></span>
+      </ion-row> -->
+        <ion-row style="max-height:30px;">
+            <div style="text-align:right;font-size: 12px;padding: 5px;">
+                {{timeStamp}}
+            </div>
+        </ion-row>
+        <ion-row text-center class="swipe-up">
+            <img src="assets/imgs/arrow-up-gif.gif" width="30px" height="30px" />
+        </ion-row>
+    </ion-grid>
+</ion-content>

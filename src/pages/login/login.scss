@@ -1,0 +1,96 @@
+page-login {
+    .list>.submitted.ng-touched.ng-invalid,
+    .list>.submitted.ng-untouched.ng-invalid,
+    .list>.submitted.ng-untouched.ng-pristine {
+        border: 1px solid #fa6a6a !important;
+    }
+    .input-cover {
+        position: static
+    }
+    .logo-wrapper {
+        margin-top: 5%;
+        margin-bottom: 5%;
+        max-height: 65%
+    }
+    .logo>img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0px 10px;
+        max-width: 80%;
+    }
+    .input-field-wrap {
+        border: 1px solid #c8c7cc !important;
+        margin-bottom: 20px;
+        border-radius: 50px !important;
+        padding-left: 30px !important;
+        box-shadow: none !important;
+        height: 45px
+    }
+    .login-button {
+        width: 50%;
+        color: color($colors, llm);
+        background-color: color($colors, dark);
+        height: 45px;
+    }
+    .text-input::-moz-placeholder {
+        text-align: center;
+        padding-right: 30px;
+    }
+    .text-input:-ms-input-placeholder {
+        text-align: center;
+        padding-right: 30px;
+    }
+    .text-input::-webkit-input-placeholder {
+        text-indent: 0;
+        text-align: center;
+        padding-right: 30px;
+    }
+    .input-field {
+        font-size: 13px;
+    }
+    .custom-text,
+    .custom-text>a {
+        // font-family: source sans;
+        font-size: 11px;
+        font-weight: lighter;
+        margin-top: 5px;
+        color: color($colors, dark);
+        text-decoration: none;
+    }
+    .custom-text>.forgot-password {
+        color: color($colors, llm);
+    }
+    .newuser {
+        margin: 35px;
+    }
+    .sign-up {
+        color: color($colors, llm);
+        margin-left: 2px;
+    }
+    .sign-up>a {
+        color: color($colors, llm);
+        text-decoration: none;
+    }
+    .error-message {
+        position: absolute;
+        color: red;
+        font-size: 20px;
+        left: 30%;
+    }
+}
+
+.toast-login {
+    .toast-wrapper {
+        background-color: #f2dede;
+        border-color: #ebccd1;
+    }
+    .toast-message {
+        color: #a94442;
+        font-size: 1.6rem;
+    }
+    .toast-button {
+        color: #a94442;
+        font-size: 1.6rem;
+    }
+}
